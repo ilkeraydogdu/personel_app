@@ -1,178 +1,153 @@
-# 📱 Qordy Personel (Garson, Mutfak KDS, POS & WMS)
+# Qordy Staff (Personel App)
+
+> **Enterprise Operations Terminal for Hospitality & Retail Ecosystem**  
+> Powered by [Qordy.com](https://qordy.com)
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
-[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://flutter.dev)
+[![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://qordy.com)
 [![State Management](https://img.shields.io/badge/State-Riverpod%202.x-5E50F9?style=for-the-badge)](https://riverpod.dev)
 [![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-blueviolet?style=for-the-badge)](https://flutter.dev)
-
-**Qordy Personel**, restoran, kafe, bar ve perakende işletmeleri için tasarlanmış yüksek performanslı, rol tabanlı operasyonel mobil terminal uygulamasıdır. Garson el terminali, mutfak ekranı (KDS), kasa/POS noktası ve depo stok yönetimini tek bir modern Flutter çatısı altında birleştirir.
-
----
-
-## 🚀 Öne Çıkan Modüller ve Özellikler
-
-### 1. 🛎️ Garson (Waiter) Terminali
-* **Canlı Masa Haritası & Durumları**: Dolu, boş, rezerve, hesap istendi ve geciken masaların anlık renk kodlu takibi.
-* **Hızlı Sipariş Girişi & Masa Detayı**: Kategorize menü, varyasyonlar, porsiyon/özellik seçimi ve sipariş notları.
-* **🎙️ AI Destekli Sesli Sipariş (`ai_voice_order_sheet`)**: Speech-to-Text ile personelin sesli olarak masaya sipariş eklemesi.
-* **🤖 AI Masa Rezervasyon Asistanı (`ai_reservation_sheet`)**: Hızlı ve akıllı rezervasyon kayıt sihirbazı.
-
-### 2. 🍳 Mutfak KDS (Kitchen Display System)
-* **Gerçek Zamanlı Sipariş Akışı**: WebSocket üzerinden anında mutfak ekranına düşen sipariş fişleri.
-* **Hazırlık Aşamaları**: Beklemede, Hazırlanıyor, Hazır, Teslim Edildi durum geçişleri ve süre takibi.
-* **Görsel & Sesli İkazlar**: Geciken siparişler için otomatik uyarılar ve etkileşimli tava animasyonu (`sizzling_pan_animation`).
-
-### 3. 💳 POS & Kasa Terminali
-* **Tahsilat & Ödeme**: Nakit, Kredi Kartı ve Cari ödeme seçenekleri.
-* **Parçalı Hesap (Split Bill)**: Kişi başı veya tutar bazlı parçalı hesap bölme (`split_bill_dialog`).
-* **Adisyon & İkram/İptal Yönetimi**: Yetkili onaylı ikram, indirim ve masa transferi.
-
-### 4. 📦 Perakende & Depo Yönetimi (Retail WMS)
-* **Kör Stok Sayımı (`blind_stocktake_screen`)**: Sistem stoğunu personele göstermeden tarafsız ve güvenli sayım.
-* **Karanlık Depo Toplayıcı (`dark_store_picker_screen`)**: E-ticaret ve hızlı teslimat siparişlerini optimize rota ile raftan toplama.
-* **Endüstriyel PDA & Barkod Desteği (`pda_barcode_scanner`)**: Donanımsal tarayıcılar ve kamera ile seri okutma.
-* **Mobil Etiket Yazıcı Servisi (`mobile_label_printer_service`)**: Bluetooth/Ağ etiket ve fiş yazıcı entegrasyonu.
-
-### 5. ⚡ Gerçek Zamanlı Altyapı & Senkronizasyon
-* **Canlı WebSocket Akışı**: Sipariş, masa durumu ve çağrı bildirimlerinin tüm terminallerle anlık senkronizasyonu.
-* **Otomatik Reconnect**: Bağlantı koptuğunda arka planda otomatik yeniden bağlanma ve veri eşitleme.
-
-### 6. 🔒 Güvenlik, Biyometri & Native Entegrasyonlar
-* **Biyometrik Kimlik Doğrulama**: FaceID / TouchID / Parmak İzi ile şifresiz anında giriş (`BiometricService`).
-* **Uygulama İçi Kilit Ekranı**: Güvenlik zaman aşımı veya arka plana geçişte otomatik kilit (`AppLockOverlayWrapper`).
-* **Korumalı Hafıza**: JWT token ve hassas işletme anahtarlarının şifreli saklanması (`flutter_secure_storage`).
-* **📱 Native HomeWidget**: Android ve iOS ana ekranında canlı ciro, açık masa ve bekleyen sipariş widget senkronizasyonu (`PersonelWidgetSyncService`).
-* **🌐 Çoklu Dil & Tema**: Türkçe ve İngilizce tam dil desteği, modern Light/Dark tema ve adaptif scroll davranışı.
+[![Website](https://img.shields.io/badge/Official%20Website-qordy.com-00B4D8?style=for-the-badge)](https://qordy.com)
 
 ---
 
-## 🏛️ Mimari ve Proje Yapısı
+## 📌 Overview
 
-Proje, **Feature-First Clean Architecture** prensipleriyle tasarlanmıştır:
+**Qordy Staff** (`personel_app`) is the mission-critical operational terminal built for restaurants, cafes, bars, and retail enterprises operating on the [Qordy Platform](https://qordy.com). 
+
+Designed for high-speed shifts, it unifies Waiter El-Terminals, Kitchen Display Systems (KDS), POS/Cashier Desks, and Warehouse Inventory Pickers into a single responsive, multi-role mobile application.
+
+---
+
+## ⚡ Core Modules
+
+### 🛎️ 1. Waiter Terminal
+* **Dynamic Table Matrix**: Live status indicators for occupied, vacant, reserved, pending bill, and overdue tables.
+* **Rapid Order Entry**: Instant menu navigation, portion modifiers, item notes, and ticket routing.
+* **AI Voice Orders**: Real-time voice-to-order parsing powered by Speech-to-Text (`ai_voice_order_sheet`).
+* **AI Reservation Assistant**: Fast booking wizard with guest party and timing validation (`ai_reservation_sheet`).
+
+### 🍳 2. Kitchen Display System (KDS)
+* **Real-Time Ticket Stream**: Zero-latency kitchen display fed directly via WebSocket pipelines.
+* **Lifecycle Tracking**: Multi-state order stages (*Queued ➔ Preparing ➔ Ready ➔ Delivered*).
+* **Audio-Visual Urgency**: Visual timers, color thresholds, and interactive animations (`sizzling_pan_animation`).
+
+### 💳 3. POS & Cashier Station
+* **Multi-Channel Settlement**: Seamless cash, credit card, and corporate account checkouts.
+* **Split Billing**: Flexible bill division by person, custom percentage, or itemized splits (`split_bill_dialog`).
+* **Table Closure**: Manager-approved discounts, cancellations, and table transfers.
+
+### 📦 4. Retail & Warehouse Management (WMS)
+* **Blind Stocktaking (`blind_stocktake_screen`)**: Impartial inventory audit without bias from theoretical counts.
+* **Dark Store Picker (`dark_store_picker_screen`)**: Optimized path routing for high-volume quick-commerce orders.
+* **Industrial PDA Scanning (`pda_barcode_scanner`)**: Hardware-accelerated barcode and QR scanning.
+* **Mobile Label & Receipt Service (`mobile_label_printer_service`)**: Wireless Bluetooth and network thermal printing.
+
+### 🔒 5. Enterprise Security & Native Experience
+* **Biometric Authentication**: Instant touchless sign-in via Face ID / Touch ID / Fingerprint (`BiometricService`).
+* **Auto-Lock Overlay**: Screen shielding during background transitions or session timeouts (`AppLockOverlayWrapper`).
+* **Native Home Widgets**: Real-time shift stats, open tables, and kitchen counters right on the device home screen (`home_widget`).
+* **Encrypted Storage**: Secure AES hardware-backed credential storage (`flutter_secure_storage`).
+
+---
+
+## 🏛️ Architecture & Directory Layout
+
+Built on **Feature-First Clean Architecture** principles:
 
 ```text
 lib/
-├── main.dart                          # Uygulama başlangıcı, global provider'lar ve tema
+├── main.dart                          # Application entry point, global observers & theme bootstrap
 └── src/
-    ├── core/                          # Çekirdek servisler ve altyapı
-    │   ├── common_widgets/            # Yeniden kullanılabilir UI bileşenleri (Button, Card, Search vb.)
-    │   ├── config/                    # API Base URL ve global ortam değişkenleri (AppConfig)
-    │   ├── data/                      # Global modeller ve JSON dönüştürücüler
-    │   ├── localization/              # TR/EN çoklu dil yönetimi (AppLocalizations)
-    │   ├── network/                   # Dio tabanlı ApiClient ve WebSocket altyapısı
-    │   ├── providers/                 # Auth, Dashboard, Vardiya ve Masa Riverpod sağlayıcıları
-    │   ├── routing/                   # GoRouter deklaratif yönlendirme ve rota koruyucuları
-    │   ├── security/                  # Şifreli depolama ve kimlik yönetimi
-    │   ├── services/                  # Bildirim, HomeWidget, Biyometri ve Yaşam Döngüsü servisleri
-    │   ├── theme/                     # Qordy UI Tasarım Sistemi (Renkler, Tipografi, Temalar)
-    │   └── utils/                     # Güvenli parse işlemleri, para birimi ve snackbar yardımcıları
-    └── features/                      # İş mantığı ve ekranlar
-        ├── auth/                      # Giriş, 4 adımlı kayıt, OTP ve şifre sıfırlama
-        ├── business/                  # İşletme metrikleri, masa ve sipariş modelleri
-        ├── kitchen/                   # Mutfak KDS ekranı ve animasyonları
-        ├── pos/                       # Kasa terminali ve parçalı ödeme ekranları
-        ├── preparation/               # Bar / Hazırlık istasyon dashboard'u
-        ├── retail_wms/                # Depo sayım, toplama ve barkod çözümleri
-        └── waiter/                    # Garson masa planı, masa detayları ve AI sipariş fişleri
+    ├── core/                          # Cross-cutting foundational services
+    │   ├── common_widgets/            # Reusable UI library (Buttons, Cards, Search, OTP)
+    │   ├── config/                    # Global environment configurations & Base URLs (AppConfig)
+    │   ├── data/                      # Global models, serializable entities, JSON utilities
+    │   ├── localization/              # Internationalization (EN / TR)
+    │   ├── network/                   # Dio HTTP client with JWT interceptors & WebSocket client
+    │   ├── providers/                 # Core Riverpod providers (Auth, Dashboard, Shift, Tables)
+    │   ├── routing/                   # GoRouter navigation & role-based route guards
+    │   ├── security/                  # Hardware-backed keystore & secure token storage
+    │   ├── services/                  # Notification, HomeWidget, Biometric & Lifecycle services
+    │   ├── theme/                     # Corporate design system (Dark & Light themes, typography)
+    │   └── utils/                     # Formatters, currency helpers, and defensive parsers
+    └── features/                      # Domain features
+        ├── auth/                      # Multi-step authentication, onboarding & recovery
+        ├── business/                  # Business metrics, table matrices & order models
+        ├── kitchen/                   # KDS dashboard & live kitchen animations
+        ├── pos/                       # Cashier terminal, split billing & payments
+        ├── preparation/               # Bar & beverage preparation dashboard
+        ├── retail_wms/                # Warehouse stocktaking, picking & barcode integrations
+        └── waiter/                    # Floor plan, table details & AI order assistants
 ```
 
 ---
 
-## 🛠️ Kurulum ve Geliştirme
+## 🛠️ Getting Started
 
-### Gereksinimler
-* [Flutter SDK](https://docs.flutter.dev/get-started/install) (`^3.12.2` veya güncel stable)
+### Prerequisites
+* [Flutter SDK](https://docs.flutter.dev/get-started/install) (`^3.12.2` or latest stable)
 * [Dart SDK](https://dart.dev)
-* Android Studio / Xcode (macOS için)
-* CocoaPods (iOS derlemeleri için: `brew install cocoapods`)
+* Android Studio / Xcode
+* CocoaPods (`brew install cocoapods` on macOS)
 
-### 1. Depoyu Klonlayın
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/ilkeraydogdu/personel_app.git
+git clone git@github.com:ilkeraydogdu/personel_app.git
 cd personel_app
 ```
 
-### 2. Bağımlılıkları Yükleyin
+### 2. Install Dependencies
 ```bash
 flutter pub get
 ```
 
-### 3. Kod Üretimini Çalıştırın (Freezed / Riverpod / JSON)
+### 3. Generate Code Assets (Riverpod / Freezed / JSON)
 ```bash
 dart run build_runner build --delete-conflicting-outputs
 ```
 
-### 4. Uygulamayı Başlatın
+### 4. Run the Application
 ```bash
-# Standart çalıştırma (Varsayılan: https://qordy.com)
+# Default production configuration (https://qordy.com)
 flutter run
 
-# Farklı bir API sunucusu tanımlayarak çalıştırma:
+# Custom API endpoint
 flutter run --dart-define=QORDY_API_BASE=https://staging.qordy.com
 ```
 
 ---
 
-## 📦 Derleme ve Canlıya Alma (Build & Deploy)
+## 📦 Build & Release
 
-Proje kök dizininde hazır optimize derleme betikleri bulunmaktadır:
+Pre-configured, production-optimized deployment scripts:
 
-### Android Release APK
-Optimize edilmiş, kod karmaşıklaştırması (obfuscation) yapılmış ve sembol tablosu ayrıştırılmış APK üretir:
 ```bash
-chmod +x build_apk.sh
+# Android Release APK (Code obfuscated, stripped symbols):
 ./build_apk.sh
-```
-*Çıktı konumu: `build/app/outputs/flutter-apk/app-release.apk`*
 
-### iOS IPA & Simulator Derlemesi
-```bash
-chmod +x build_ios.sh
-
-# Geliştirme / Simülatör için:
+# iOS Simulator Build:
 ./build_ios.sh --simulator
 
-# App Store / TestFlight için IPA paketi:
+# iOS App Store / TestFlight IPA:
 ./build_ios.sh --ipa
-
-# İmzalamasız yerel test paketi:
-./build_ios.sh
 ```
 
 ---
 
-## 🔄 Git & Güncelleme İş Akışı
+## 🤖 CI/CD Pipelines
 
-Projeye yeni bir özellik eklerken veya güncelleme yaparken aşağıdaki adımları izleyebilirsiniz:
-
-```bash
-# 1. En son değişiklikleri çekin
-git pull origin main
-
-# 2. Değişiklikleri yapın ve kontrol edin
-flutter analyze
-git status
-
-# 3. Değişiklikleri sahneye ekleyin
-git add .
-
-# 4. Anlamlı bir commit mesajı ile kaydedin
-git commit -m "feat(waiter): AI sesli sipariş filtresi optimize edildi"
-
-# 5. GitHub'a gönderin
-git push origin main
-```
+Automated via **GitHub Actions**:
+* **`Qordy Personel CI`**: Runs `flutter analyze` and `flutter test` automatically on every push and pull request.
+* **`Build Android APK`**: Manual on-demand release build trigger (`workflow_dispatch`) delivering downloadable APK artifacts.
 
 ---
 
-## 🤖 GitHub Actions CI/CD
+## 🌐 Enterprise & Support
 
-Depoda entegre çalışan CI boru hatları mevcuttur:
-* **`Qordy Personel CI`**: Her `push` ve `pull_request` işleminde otomatik `flutter analyze` ve `flutter test` kontrollerini çalıştırır.
-* **`Build Android APK`**: GitHub Actions sekmesinden manuel tek tıkla (`workflow_dispatch`) Release veya Debug APK derleyip indirilebilir artifact olarak sunar.
+For enterprise deployments, custom white-label solutions, or technical support, visit our corporate portal:
 
----
-
-## 📄 Lisans & Telif Hakkı
-Bu yazılımın tüm hakları **Qordy** ve **İlker Aydoğdu**'ya aittir. İzinsiz kopyalanamaz, çoğaltılamaz veya dağıtılamaz.
+* **Official Website**: [https://qordy.com](https://qordy.com)
+* **Company**: Qordy Hospitality & Retail Technologies
+* **Copyright**: © 2026 Qordy. All rights reserved.
