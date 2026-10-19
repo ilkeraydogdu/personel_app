@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Qordy Personel</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Qordy Personel</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>UIWindowScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>flutter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<!-- Face ID & Biyometrik Kimlik Doğrulama (Garson/Kasiyer/Mutfak Terminali Kilidi) -->
+	<key>NSFaceIDUsageDescription</key>
+	<string>Personel terminaline hızlı ve güvenli giriş yapmak ve vardiya ekran kilidini açmak için Face ID kullanılır.</string>
+
+	<!-- Mikrofon & Konuşma Tanıma (AI Sesli Sipariş & AI Rezervasyon Asistanı) -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Garson sesli sipariş alma (AI Voice Order) ve sesli rezervasyon oluşturma özellikleri için mikrofon erişimi gereklidir.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Sesli siparişlerinizi ve rezervasyon notlarınızı gerçek zamanlı metne dönüştürmek için konuşma tanıma izni gereklidir.</string>
+
+	<!-- Kamera & Fotoğraf Galerisi (QR Masa Okuma, Fiş/Adisyon ve Ürün Görseli) -->
+	<key>NSCameraUsageDescription</key>
+	<string>Masa QR kodlarını okutmak, adisyon doğrulamak ve profil/ürün fotoğrafı çekmek için kamera erişimi gereklidir.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Profil fotoğrafı veya işletme görseli seçebilmek için fotoğraf galerisi erişimi gereklidir.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Adisyon özetlerini ve rapor görsellerini cihazınıza kaydetmek için fotoğraf arşivi izni gereklidir.</string>
+
+	<!-- Konum İzinleri (Restoran/Şube İçi Vardiya ve Masa Doğrulaması) -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Personel vardiya giriş-çıkış doğrulaması ve şube içi terminal eşleşmesi için konum bilgisi kullanılır.</string>
+
+	<!-- Yerel Ağ (POS Yazıcı, KDS Ekranı ve WebSocket Bağlantısı) -->
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Restoran içi POS terminali, mutfak ekranı (KDS) ve fiş yazıcılarıyla gerçek zamanlı iletişim kurmak için yerel ağ erişimi kullanılır.</string>
+
+	<!-- Arka Plan Modları (Canlı Sipariş, Garson Çağrısı, KDS Bildirimleri) -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+
+	<!-- Ağ Güvenliği -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+
+	<!-- Durum Çubuğu ve Görünüm -->
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+
+	<!-- App Store Şifreleme Beyanı -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+
+	<!-- Dil Desteği -->
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>tr</string>
+		<string>en</string>
+	</array>
+</dict>
+</plist>
